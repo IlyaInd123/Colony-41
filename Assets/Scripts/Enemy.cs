@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float speed = 5f;
     [SerializeField] Image healthBar;
-    [SerializeField] Transform waypointParent;
+    [SerializeField] public Transform waypointParent;
     List<Transform> waypoints = new();
     int currentIndex;
     public float currentHealth;
@@ -23,9 +23,10 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    void Awake()
+    void Start()
     {
         currentHealth = maxHealth;
+        if (waypointParent == null) { return; }
         foreach (Transform child in waypointParent)
         {
             if (waypoints.Contains(child)) { continue; }
@@ -52,6 +53,27 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 currentIndex = currentIndex < waypoints.Count - 1 ? currentIndex + 1 : waypoints.Count - 1;
             }
+        }
+    }
+
+    public void SetWayPointParent(Transform waypointParent)
+    {
+        this.waypointParent = waypointParent;
+        waypoints.Clear();
+        foreach (Transform child in waypointParent)
+        {
+            if (waypoints.Contains(child)) { continue; }
+            waypoints.Add(child);
+        }
+        waypoints.RemoveAll(child => child == null);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        foreach (Transform waypoint in waypoints)
+        {
+            Gizmos.DrawWireSphere(waypoint.position, 0.5f);
         }
     }
 }
