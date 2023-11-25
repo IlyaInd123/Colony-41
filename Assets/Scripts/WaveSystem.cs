@@ -1,17 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
     [SerializeField] List<Wave> waves;
     [SerializeField] TextMeshProUGUI waveCountdownText;
+    List<GameObject> enemies = new();
     int currentWaveIndex = 0;
 
     void Start()
     {
         StartCoroutine(BeginWaves());
+    }
+
+    void Update()
+    {
+        if (enemies.Count > 0)
+        {
+           enemies.RemoveAll(enemy => enemy == null);
+        }
     }
 
     IEnumerator BeginWaves()
@@ -31,6 +41,8 @@ public class WaveSystem : MonoBehaviour
         {
             StartCoroutine(SpawnEnemies(spawner));
         }
+
+        yield return new WaitUntil(() => enemies.Count == 0);
 
         currentWaveIndex++;
     }
@@ -56,6 +68,7 @@ public class WaveSystem : MonoBehaviour
             if (newEnemy.TryGetComponent(out Enemy enemy))
             {
                 enemy.SetWayPointParent(spawner.waypointParent);
+                enemies.Add(newEnemy);
             }
             yield return new WaitForSeconds(spawner.spawnInterval);
         }
