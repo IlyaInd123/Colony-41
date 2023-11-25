@@ -5,11 +5,11 @@ public class WaypointViewer : MonoBehaviour
 {
     List<Transform> waypoints = new();
 
-    private void OnValidate()
+    public void UpdateWaypoints()
     {
+        waypoints.Clear();
         foreach (Transform child in transform)
         {
-            if (waypoints.Contains(child)) { continue; }
             waypoints.Add(child);
         }
         waypoints.RemoveAll(child => child == null);
@@ -17,6 +17,7 @@ public class WaypointViewer : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        UpdateWaypoints();
         if (waypoints.Count > 0)
         {
             for (int i = 0; i < waypoints.Count; i++)
