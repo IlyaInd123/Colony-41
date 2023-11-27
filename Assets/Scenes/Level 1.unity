@@ -378,6 +378,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 1000
   damagePerSecond: 50
+  layersToIgnore:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &451301759
 MonoBehaviour:
   m_ObjectHideFlags: 0
