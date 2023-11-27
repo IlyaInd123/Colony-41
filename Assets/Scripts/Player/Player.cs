@@ -32,7 +32,15 @@ public class Player : MonoBehaviour, IDamageable
         float verticalInput = Input.GetAxisRaw("Vertical");
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput).normalized;
         movement = transform.TransformDirection(movement);
-        rb.MovePosition(transform.position + movementSpeed * Time.deltaTime * movement);
+        if (movement.magnitude != 0)
+        {
+            rb.velocity += movement;
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, movementSpeed);
+        }
+        else
+        {
+            rb.velocity = new(0, rb.velocity.y, 0);
+        }
     }
 
     public void TakeDamage(float damage)
