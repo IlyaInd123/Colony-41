@@ -22,7 +22,7 @@ public class Player : MonoBehaviour, IDamageable
         Movement();
         if (laserWeapon != null && Input.GetKey(KeyCode.Mouse0))
         {
-            laserWeapon.ShootLaser();
+            laserWeapon.Fire(transform.forward);
         }
     }
 

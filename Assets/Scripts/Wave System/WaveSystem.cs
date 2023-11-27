@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
@@ -18,10 +17,16 @@ public class WaveSystem : MonoBehaviour
 
     void Update()
     {
+        GetEnemies();
+    }
+
+    public List<GameObject> GetEnemies()
+    {
         if (enemies.Count > 0)
         {
-           enemies.RemoveAll(enemy => enemy == null);
+            enemies.RemoveAll(enemy => enemy == null);
         }
+        return enemies;
     }
 
     IEnumerator BeginWaves()

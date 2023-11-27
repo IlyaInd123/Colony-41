@@ -15,8 +15,8 @@ public class FirstPersonCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        xRotation += Input.GetAxis("Mouse X") * lookSensitivity;
-        yRotation -= Input.GetAxis("Mouse Y") * lookSensitivity;
+        xRotation += Input.GetAxis("Mouse X") * lookSensitivity * Time.deltaTime * 100;
+        yRotation -= Input.GetAxis("Mouse Y") * lookSensitivity * Time.deltaTime * 100;
         yRotation = Mathf.Clamp(yRotation, -maxLookAngle, maxLookAngle);
         Vector3 rotation = new(yRotation, xRotation, 0f);
         transform.rotation = Quaternion.Euler(rotation);

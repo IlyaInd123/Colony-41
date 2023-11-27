@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable, ISlowable
 {
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float rotationSpeed = 10f;
@@ -46,8 +46,11 @@ public class Enemy : MonoBehaviour, IDamageable
             {
                 Destroy(gameObject);
             }
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
             transform.position = Vector3.MoveTowards(transform.position, waypoint.position, Time.deltaTime * speed);
             if (distance < 0.1f)
             {
@@ -75,5 +78,15 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             Gizmos.DrawWireSphere(waypoint.position, 0.5f);
         }
+    }
+
+    public void ApplySlow(float slowPercentage)
+    {
+        speed *= 1 - slowPercentage;
+    }
+
+    public void RemoveSlow(float slowPercentage)
+    {
+        speed /= 1 - slowPercentage;
     }
 }
