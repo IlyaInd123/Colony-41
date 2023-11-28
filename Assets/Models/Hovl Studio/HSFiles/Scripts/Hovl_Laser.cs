@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class Hovl_Laser : MonoBehaviour
 {
-    public int damageOverTime = 30;
-
+    public LayerMask layersToIgnore;
     public GameObject HitEffect;
     public float HitOffset = 0;
     public bool useLaserRotation = false;
@@ -51,7 +50,7 @@ public class Hovl_Laser : MonoBehaviour
             Laser.SetPosition(0, transform.position);
             RaycastHit hit; //DELETE THIS IF YOU WANT USE LASERS IN 2D
             //ADD THIS IF YOU WANNT TO USE LASERS IN 2D: RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, MaxLength);       
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))//CHANGE THIS IF YOU WANT TO USE LASERRS IN 2D: if (hit.collider != null)
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength, ~layersToIgnore))//CHANGE THIS IF YOU WANT TO USE LASERRS IN 2D: if (hit.collider != null)
             {
                 //End laser position if collides with object
                 Laser.SetPosition(1, hit.point);

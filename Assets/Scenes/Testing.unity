@@ -237,6 +237,37 @@ Transform:
   m_Father: {fileID: 464067455}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &155940599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 155940600}
+  m_Layer: 3
+  m_Name: Laser Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &155940600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155940599}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.521, z: 0.766}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1564899550}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &251520566
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 15
   fireAngleThreshold: 5
+  laserPrefab: {fileID: 0}
+  laserSpawnPoint: {fileID: 0}
 --- !u!114 &251520568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1423,6 +1456,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 15
   fireAngleThreshold: 5
+  laserPrefab: {fileID: 0}
+  laserSpawnPoint: {fileID: 0}
 --- !u!114 &908231294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2110,6 +2145,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 15
   fireAngleThreshold: 5
+  laserPrefab: {fileID: 1204471137167242, guid: a8c75a77f5cb95a43b8f036a637bdac8,
+    type: 3}
+  laserSpawnPoint: {fileID: 155940600}
 --- !u!114 &1564899546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2204,6 +2242,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 469169224}
+  - {fileID: 155940600}
   m_Father: {fileID: 1377809726}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

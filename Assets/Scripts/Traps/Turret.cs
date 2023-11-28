@@ -6,9 +6,13 @@ public class Turret : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = 1f;
     [SerializeField] float fireAngleThreshold = 5f;
+    [SerializeField] GameObject laserPrefab;
+    [SerializeField] Transform laserSpawnPoint;
+    GameObject laserInstance;
     WaveSystem waveSystem;
     Transform target;
     LaserWeapon laserWeapon;
+    bool shooting = false;
     
     private void Start()
     {
@@ -36,7 +40,32 @@ public class Turret : MonoBehaviour
             if (Vector3.Angle(transform.forward, directionToTarget) < fireAngleThreshold && Vector3.Distance(transform.position, target.position) <= laserWeapon.Range)
             {
                 laserWeapon.Fire(directionToTarget);
+                shooting = true;
             }
+        }
+        else
+        {
+            shooting = false;
+        }
+
+        HandleLaser();
+    }
+
+    private void HandleLaser()
+    {
+        if (shooting && laserInstance == null)
+        {
+            laserInstance = Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation);
+            laserInstance.transform.parent = laserSpawnPoint;
+        }
+        else if (shooting && laserInstance != null)
+        {
+            laserInstance.transform.LookAt(target);
+            laserInstance.transform.position = laserSpawnPoint.position;
+        }
+        else if (!shooting && laserInstance != null)
+        {
+            Destroy(laserInstance);
         }
     }
 

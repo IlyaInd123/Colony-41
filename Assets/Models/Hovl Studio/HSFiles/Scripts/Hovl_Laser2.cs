@@ -11,7 +11,7 @@ public class Hovl_Laser2 : MonoBehaviour
     public GameObject HitEffect;
     public GameObject FlashEffect;
     public float HitOffset = 0;
-
+    public LayerMask layersToIgnore;
     public float MaxLength;
 
     private bool UpdateSaver = false;
@@ -42,7 +42,7 @@ public class Hovl_Laser2 : MonoBehaviour
             laserMat.SetVector("_StartPoint", transform.position);
             //Set end laser point
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength, ~layersToIgnore))
             {
                 particleCount = Mathf.RoundToInt(hit.distance / (2 * laserScale));
                 if (particleCount < hit.distance / (2 * laserScale))
