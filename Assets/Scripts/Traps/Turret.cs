@@ -39,7 +39,7 @@ public class Turret : MonoBehaviour
 
             if (Vector3.Angle(transform.forward, directionToTarget) < fireAngleThreshold && Vector3.Distance(transform.position, target.position) <= laserWeapon.Range)
             {
-                laserWeapon.Fire(directionToTarget);
+                laserWeapon.Fire(laserSpawnPoint.position, directionToTarget);
                 shooting = true;
             }
         }

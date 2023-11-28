@@ -7,9 +7,9 @@ public class LaserWeapon : MonoBehaviour
     [SerializeField] LayerMask layersToIgnore;
     public float Range { get => range; }
 
-    public void Fire(Vector3 direction)
+    public void Fire(Vector3 origin, Vector3 direction)
     {
-        if (Physics.Raycast(transform.position, direction, out var hit, Range, ~layersToIgnore))
+        if (Physics.Raycast(origin, direction, out var hit, Range, ~layersToIgnore))
         {
             if (hit.collider.TryGetComponent(out IDamageable damageable))
             {
