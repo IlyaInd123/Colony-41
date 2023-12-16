@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour, IDamageable, ISlowable
 {
     [SerializeField] float maxHealth = 100f;
+    [SerializeField] float enegryReward = 10f;
     [SerializeField] float rotationSpeed = 10f;
     [SerializeField] float speed = 5f;
     [SerializeField] Image healthBar;
@@ -12,6 +13,8 @@ public class Enemy : MonoBehaviour, IDamageable, ISlowable
     List<Transform> waypoints = new();
     int currentIndex;
     public float currentHealth;
+
+    public bool IsSlowed { get; private set; }
 
     public void TakeDamage(float damage)
     {
@@ -83,10 +86,21 @@ public class Enemy : MonoBehaviour, IDamageable, ISlowable
     public void ApplySlow(float slowPercentage)
     {
         speed *= 1 - slowPercentage;
+        IsSlowed = true;
     }
 
     public void RemoveSlow(float slowPercentage)
     {
         speed /= 1 - slowPercentage;
+        IsSlowed = false;
+    }
+
+    private void OnDestroy()
+    {
+        TrapPurchaser purchaser = FindObjectOfType<TrapPurchaser>();
+        if (purchaser != null)
+        {
+            purchaser.IncreaseEnergy(enegryReward);
+        }
     }
 }

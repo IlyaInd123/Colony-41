@@ -35,6 +35,8 @@ public class WaveSystem : MonoBehaviour
         {
             yield return StartNextWave();
         }
+
+        GameManager.Instance.LevelClear();
     }
 
     IEnumerator StartNextWave()

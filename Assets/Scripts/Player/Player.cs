@@ -1,15 +1,11 @@
-using Cinemachine;
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Player : MonoBehaviour, IDamageable
+public class Player : MonoBehaviour
 {
     [SerializeField] float movementSpeed = 10f;
-    [SerializeField] float maxHealth = 100f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] Transform laserSpawnPoint;
-    float currentHealth;
     bool shooting;
     Camera mainCamera;
     GameObject laserInstance;
@@ -20,7 +16,6 @@ public class Player : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody>();
         laserWeapon = GetComponentInChildren<LaserWeapon>();
-        currentHealth = maxHealth;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         mainCamera = Camera.main;
@@ -60,20 +55,6 @@ public class Player : MonoBehaviour, IDamageable
         {
             rb.velocity = new(0, rb.velocity.y, 0);
         }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        throw new NotImplementedException();
     }
 
     private void HandleLaser()

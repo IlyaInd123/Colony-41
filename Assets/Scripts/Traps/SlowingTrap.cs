@@ -1,17 +1,38 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class SlowingTrap : MonoBehaviour
+public class SlowingTrap : Trap
 {
     [SerializeField] float slowPercentage = 0.5f;
     List<ISlowable> slowables = new();
+
+    private void Update()
+    {
+        if (active)
+        {
+            foreach (ISlowable slowable in slowables)
+            {
+                if (slowable != null && !slowable.IsSlowed)
+                {
+                    slowable.ApplySlow(slowPercentage);
+                }
+                else if (slowable == null)
+                {
+                    slowables.Remove(slowable);
+                }
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out ISlowable slowable))
         {
             slowables.Add(slowable);
-            slowable.ApplySlow(slowPercentage);
+            if (active)
+            {
+                slowable.ApplySlow(slowPercentage);
+            }
         }
     }
 
@@ -19,7 +40,10 @@ public class SlowingTrap : MonoBehaviour
     {
         if (other.TryGetComponent(out ISlowable slowable) && slowables.Contains(slowable))
         {
-            slowable.RemoveSlow(slowPercentage);
+            if (slowable.IsSlowed)
+            {
+                slowable.RemoveSlow(slowPercentage);
+            }
             slowables.Remove(slowable);
         }
     }

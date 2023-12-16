@@ -1,22 +1,20 @@
 using UnityEditor;
 using UnityEngine;
 
-[RequireComponent(typeof(LaserWeapon))]
-public class Turret : MonoBehaviour
+public class Turret : Trap
 {
     [SerializeField] float rotationSpeed = 1f;
     [SerializeField] float fireAngleThreshold = 5f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] Transform laserSpawnPoint;
+    [SerializeField] LaserWeapon laserWeapon;
     GameObject laserInstance;
     WaveSystem waveSystem;
     Transform target;
-    LaserWeapon laserWeapon;
     bool shooting = false;
     
     private void Start()
     {
-        laserWeapon = GetComponent<LaserWeapon>();
         waveSystem = FindObjectOfType<WaveSystem>();
     }
 
@@ -24,12 +22,14 @@ public class Turret : MonoBehaviour
     {
         if (laserWeapon == null)
         {
-            laserWeapon = GetComponent<LaserWeapon>();
+            //laserWeapon = GetComponent<LaserWeapon>();
         }
     }
 
     private void Update()
     {
+        if (!active) { return; }
+
         target = GetClosestEnemy();
         if (target != null && Vector3.Distance(transform.position, target.position) <= laserWeapon.Range)
         {

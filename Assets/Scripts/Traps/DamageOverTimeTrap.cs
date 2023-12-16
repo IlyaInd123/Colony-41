@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageOverTimeTrap : MonoBehaviour
+public class DamageOverTimeTrap : Trap
 {
     [SerializeField] float tickRate = 0.5f;
     [SerializeField] float damagePerSecond = 5f;
@@ -10,7 +10,10 @@ public class DamageOverTimeTrap : MonoBehaviour
 
     private void Update()
     {
-        ApplyDamage(damageableDictionary);
+        if (active)
+        {
+            ApplyDamage(damageableDictionary);
+        }
     }
 
     void ApplyDamage(Dictionary<GameObject, (IDamageable damagable, float timer)> damageableDictionary)
