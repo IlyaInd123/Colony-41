@@ -10,7 +10,7 @@ public class TrapPurchaser : MonoBehaviour
     [SerializeField] float energy = 1000f;
     [SerializeField] KeyCode purchaseKey = KeyCode.E;
     [SerializeField] float activationRange = 10f;
-    [SerializeField] GameObject trapUI;
+    [SerializeField] TextMeshProUGUI trapUI;
     [SerializeField] Vector3 minScale = Vector3.one / 2;
     [SerializeField] Vector3 maxScale = Vector3.one;
     Trap currentTrap;
@@ -24,12 +24,12 @@ public class TrapPurchaser : MonoBehaviour
         if (trapInView != null && trapInView != currentTrap)
         {
             currentTrap = trapInView;
-            ShowTrapUI(true);
+            ToggleTrapUI(true);
         }
         else if (trapInView == null)
         {
             currentTrap = null;
-            ShowTrapUI(false);
+            ToggleTrapUI(false);
         }
 
         if (currentTrap != null)
@@ -52,12 +52,12 @@ public class TrapPurchaser : MonoBehaviour
         trapUI.transform.localScale = scale;
         if (screenPos.z < 0)
         {
-            trapUI.SetActive(false);
+            trapUI.gameObject.SetActive(false);
         }
         else
         {
             trapUI.transform.position = screenPos;
-            trapUI.SetActive(true);
+            trapUI.gameObject.SetActive(true);
         }
     }
 
@@ -78,10 +78,14 @@ public class TrapPurchaser : MonoBehaviour
         return null;
     }
 
-    void ShowTrapUI(bool show)
+    void ToggleTrapUI(bool show)
     {
         if (trapUI == null) { return; }
-        trapUI.SetActive(show);
+        if (currentTrap != null)
+        {
+            trapUI.text = $"Purchase {currentTrap.name} \n {currentTrap.Cost} Energy";
+        }
+        trapUI.gameObject.SetActive(show);
     }
 
     private void PurchaseTrap()
@@ -91,7 +95,7 @@ public class TrapPurchaser : MonoBehaviour
             if (audioSource != null && purchaseSound != null) { audioSource.PlayOneShot(purchaseSound); }
             energy -= currentTrap.Cost;
             currentTrap.Activate();
-            ShowTrapUI(false);
+            ToggleTrapUI(false);
         }
         else
         {
