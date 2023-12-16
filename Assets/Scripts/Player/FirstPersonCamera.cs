@@ -6,6 +6,7 @@ public class FirstPersonCamera : MonoBehaviour
     [SerializeField][Range(50f, 90f)] float maxLookAngle = 75f;
     float xRotation = 0f;
     float yRotation = 0f;
+    bool active = false;
 
     private void Start()
     {

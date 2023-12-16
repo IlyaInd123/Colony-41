@@ -10,11 +10,13 @@ public class Player : MonoBehaviour
     Camera mainCamera;
     GameObject laserInstance;
     LaserWeapon laserWeapon;
+    TrapPurchaser trapPurchaser;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        trapPurchaser = FindObjectOfType<TrapPurchaser>();
         laserWeapon = GetComponentInChildren<LaserWeapon>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -72,5 +74,20 @@ public class Player : MonoBehaviour
         {
             Destroy(laserInstance);
         }
+    }
+
+    public void IncreaseDamage(float percentage)
+    {
+        laserWeapon.IncreaseDamage(percentage);
+    }
+
+    public void IncreaseSpeed(float percentage)
+    {
+        movementSpeed *= percentage;
+    }
+
+    public void IncreaseEnergy(float percentage)
+    {
+        trapPurchaser.IncreaseEnergy(percentage);
     }
 }

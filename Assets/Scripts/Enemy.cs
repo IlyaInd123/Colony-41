@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour, IDamageable, ISlowable
         TrapPurchaser purchaser = FindObjectOfType<TrapPurchaser>();
         if (purchaser != null)
         {
-            purchaser.IncreaseEnergy(enegryReward);
+            purchaser.IncrementEnergy(enegryReward);
         }
     }
 }

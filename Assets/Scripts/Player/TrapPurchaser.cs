@@ -103,10 +103,15 @@ public class TrapPurchaser : MonoBehaviour
         }
     }
 
-    public void IncreaseEnergy(float amount)
+    public void IncrementEnergy(float amount)
     {
         energy += amount;
     }
+
+    public void IncreaseEnergy(float percentage)
+    {
+        energy *= percentage;
+    }   
 
     private void OnDrawGizmos()
     {
