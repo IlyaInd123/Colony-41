@@ -9,7 +9,8 @@ public class LaserWeapon : MonoBehaviour
 
     public void Fire(Vector3 origin, Vector3 direction)
     {
-        if (Physics.Raycast(origin, direction, out var hit, Range, ~layersToIgnore))
+        RaycastHit hit;
+        if (Physics.Raycast(origin, direction, out hit, Range, ~layersToIgnore))
         {
             if (hit.collider.TryGetComponent(out IDamageable damageable))
             {

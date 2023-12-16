@@ -61,8 +61,7 @@ public class Player : MonoBehaviour
     {
         if (shooting && laserInstance == null)
         {
-            laserInstance = Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation);
-            laserInstance.transform.parent = laserSpawnPoint;
+            laserInstance = Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation, laserSpawnPoint);
         }
         else if (shooting && laserInstance != null)
         {

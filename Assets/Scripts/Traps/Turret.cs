@@ -28,7 +28,11 @@ public class Turret : Trap
 
     private void Update()
     {
-        if (!active) { return; }
+        if (!active) 
+        { 
+            if (laserInstance != null) { Destroy(laserInstance); }
+            return; 
+        }
 
         target = GetClosestEnemy();
         if (target != null && Vector3.Distance(transform.position, target.position) <= laserWeapon.Range)
@@ -39,7 +43,8 @@ public class Turret : Trap
 
             if (Vector3.Angle(transform.forward, directionToTarget) < fireAngleThreshold && Vector3.Distance(transform.position, target.position) <= laserWeapon.Range)
             {
-                laserWeapon.Fire(laserSpawnPoint.position, directionToTarget);
+                Vector3 directionFromLaserToEnemy = target.position - laserSpawnPoint.position;
+                laserWeapon.Fire(laserSpawnPoint.position, directionFromLaserToEnemy);
                 shooting = true;
             }
         }
@@ -53,10 +58,9 @@ public class Turret : Trap
 
     private void HandleLaser()
     {
-        if (shooting && laserInstance == null)
+        if (shooting && laserInstance == null && laserPrefab != null)
         {
-            laserInstance = Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation);
-            laserInstance.transform.parent = laserSpawnPoint;
+            laserInstance = Instantiate(laserPrefab, laserSpawnPoint.position, laserSpawnPoint.rotation, laserSpawnPoint);
         }
         else if (shooting && laserInstance != null)
         {
@@ -92,7 +96,7 @@ public class Turret : Trap
         if (target != null && Vector3.Angle(transform.forward, target.position - transform.position) < fireAngleThreshold)
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, target.position);
+            Gizmos.DrawLine(laserSpawnPoint.position, target.position);
         }
 
 #if UNITY_EDITOR
