@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &158494395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Colony 41
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f457a03ceb397487b9947831292e12cb, type: 2}
-  m_sharedMaterial: {fileID: 6866976398865264633, guid: f457a03ceb397487b9947831292e12cb,
+  m_fontAsset: {fileID: 11400000, guid: 19bc7b5f2920848ff8fc045eb5d01b25, type: 2}
+  m_sharedMaterial: {fileID: 4695345542980160090, guid: 19bc7b5f2920848ff8fc045eb5d01b25,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -215,7 +215,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 32
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &261668377
 RectTransform:
   m_ObjectHideFlags: 0
@@ -294,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 154, y: 0}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &261668378
@@ -329,8 +329,8 @@ MonoBehaviour:
     Game
     Motivator: Mustafa Sibai'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f457a03ceb397487b9947831292e12cb, type: 2}
-  m_sharedMaterial: {fileID: 6866976398865264633, guid: f457a03ceb397487b9947831292e12cb,
+  m_fontAsset: {fileID: 11400000, guid: 19bc7b5f2920848ff8fc045eb5d01b25, type: 2}
+  m_sharedMaterial: {fileID: 4695345542980160090, guid: 19bc7b5f2920848ff8fc045eb5d01b25,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -465,8 +465,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: From the developer of "Commander Hassan"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: f457a03ceb397487b9947831292e12cb, type: 2}
-  m_sharedMaterial: {fileID: 6866976398865264633, guid: f457a03ceb397487b9947831292e12cb,
+  m_fontAsset: {fileID: 11400000, guid: 19bc7b5f2920848ff8fc045eb5d01b25, type: 2}
+  m_sharedMaterial: {fileID: 4695345542980160090, guid: 19bc7b5f2920848ff8fc045eb5d01b25,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}

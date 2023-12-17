@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2e230bbd7e6934594a1ab70e601f9cb9
+guid: 812729283cee243e9ba7cbd08660dc81
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - STARWARS
+  - BatmanForeverOutline
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
