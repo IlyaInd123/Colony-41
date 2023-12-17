@@ -8873,12 +8873,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - spawners:
-    - enemyCount: 15
+    - enemyCount: 10
       spawnPoint: {fileID: 1183272786}
       enemyPrefab: {fileID: 9132076828621254858, guid: 5660ddaf88aff714d93a8c572198d9f1,
         type: 3}
       waypointParent: {fileID: 1002009127}
       spawnInterval: 2
+    - enemyCount: 10
+      spawnPoint: {fileID: 716613083}
+      enemyPrefab: {fileID: 9132076828621254858, guid: 5660ddaf88aff714d93a8c572198d9f1,
+        type: 3}
+      waypointParent: {fileID: 1377875062}
+      spawnInterval: 4
+    preparationTime: 3
+  - spawners:
+    - enemyCount: 15
+      spawnPoint: {fileID: 482226321}
+      enemyPrefab: {fileID: 9132076828621254858, guid: 5660ddaf88aff714d93a8c572198d9f1,
+        type: 3}
+      waypointParent: {fileID: 149299974}
+      spawnInterval: 4
+    - enemyCount: 10
+      spawnPoint: {fileID: 716613083}
+      enemyPrefab: {fileID: 9132076828621254858, guid: 5660ddaf88aff714d93a8c572198d9f1,
+        type: 3}
+      waypointParent: {fileID: 1377875062}
+      spawnInterval: 2
+    preparationTime: 3
+  - spawners:
+    - enemyCount: 10
+      spawnPoint: {fileID: 1183272786}
+      enemyPrefab: {fileID: 9132076828621254858, guid: 5660ddaf88aff714d93a8c572198d9f1,
+        type: 3}
+      waypointParent: {fileID: 1002009127}
+      spawnInterval: 2
+    - enemyCount: 10
+      spawnPoint: {fileID: 482226321}
+      enemyPrefab: {fileID: 9132076828621254858, guid: 5660ddaf88aff714d93a8c572198d9f1,
+        type: 3}
+      waypointParent: {fileID: 149299974}
+      spawnInterval: 3
+    - enemyCount: 10
+      spawnPoint: {fileID: 716613083}
+      enemyPrefab: {fileID: 9132076828621254858, guid: 5660ddaf88aff714d93a8c572198d9f1,
+        type: 3}
+      waypointParent: {fileID: 1377875062}
+      spawnInterval: 4
     preparationTime: 3
   waveCountdownText: {fileID: 1761634707}
 --- !u!4 &2142691557
