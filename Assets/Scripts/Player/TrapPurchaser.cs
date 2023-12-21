@@ -4,8 +4,6 @@ using UnityEngine;
 public class TrapPurchaser : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip purchaseSound;
-    [SerializeField] AudioClip insufficientFundsSound;
     [SerializeField] TextMeshProUGUI energyText;
     [SerializeField] float energy = 1000f;
     [SerializeField] KeyCode purchaseKey = KeyCode.E;
@@ -92,14 +90,13 @@ public class TrapPurchaser : MonoBehaviour
     {
         if (energy >= currentTrap.Cost && !currentTrap.active)
         {
-            if (audioSource != null && purchaseSound != null) { audioSource.PlayOneShot(purchaseSound); }
             energy -= currentTrap.Cost;
             currentTrap.Activate();
             ToggleTrapUI(false);
         }
         else
         {
-            if (audioSource != null && insufficientFundsSound != null) { audioSource.PlayOneShot(insufficientFundsSound); }
+            if (audioSource != null) { audioSource.Play(); }
         }
     }
 
@@ -110,7 +107,7 @@ public class TrapPurchaser : MonoBehaviour
 
     public void IncreaseEnergy(float percentage)
     {
-        energy *= percentage;
+        energy += percentage * energy;
     }   
 
     private void OnDrawGizmos()

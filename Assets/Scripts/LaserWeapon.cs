@@ -21,6 +21,7 @@ public class LaserWeapon : MonoBehaviour
 
     public void IncreaseDamage(float percentage)
     {
-        damagePerSecond *= percentage;
+        float damageIncrease = percentage * damagePerSecond;
+        damagePerSecond += damageIncrease;
     }
 }

@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 
     public void IncreaseSpeed(float percentage)
     {
-        movementSpeed *= percentage;
+        movementSpeed += percentage * movementSpeed;
     }
 
     public void IncreaseEnergy(float percentage)
