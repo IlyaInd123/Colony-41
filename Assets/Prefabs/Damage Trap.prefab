@@ -60,7 +60,7 @@ MonoBehaviour:
   audioSource: {fileID: 2250295209198424464}
   meshRenderer: {fileID: 0}
   tickRate: 0.5
-  damagePerSecond: 10
+  damagePerSecond: 30
 --- !u!65 &2250295209198424467
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84,8 +84,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 9172a00457da2494bbf1f7c88f6650c0, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
