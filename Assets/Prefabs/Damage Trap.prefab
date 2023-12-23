@@ -53,7 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasChildren: 1
   activationTime: 30
-  cost: 100
+  cost: 200
   cooldownImage: {fileID: 5298100031725632760}
   activeMaterial: {fileID: 2100000, guid: 04e71246c75bcad4bb526ab1430652ce, type: 2}
   inactiveMaterial: {fileID: 2100000, guid: e94c6df55c23461438121ac71f432855, type: 2}
